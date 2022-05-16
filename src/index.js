@@ -47,11 +47,13 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-function search(event) {
+function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  console.log(cityInputElement.value);
+  search(cityInputElement.value);
 }
+
+search("Poznań");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);

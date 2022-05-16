@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="src/index.js"></script>
+
     <title>Weather app</title>
   </head>
   <body>
@@ -27,12 +27,13 @@
                   placeholder="Type a city"
                   class="form-control"
                   id="city-input"
+                  autocomplete="off"
                 />
               </div>
               <div class="col-3">
                 <input
                   type="submit"
-                  value="Search"
+                  value="search"
                   class="btn btn-primary w-100"
                 />
               </div>
@@ -67,5 +68,6 @@
         </small>
       </div>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
