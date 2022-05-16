@@ -63,3 +63,12 @@ li::first-letter {
   font-size: 16px;
   top: -34px;
 }
+
+.clearfix .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.clearfix .active {
+  text-decoration: none;
+}
