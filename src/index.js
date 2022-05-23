@@ -21,7 +21,8 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#day-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -48,6 +49,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "60d6c7645117d27721f091cb48cb8b98";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
+}
+
 function displayTemperature(response) {
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#temp");
@@ -69,6 +76,8 @@ function displayTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -111,4 +120,3 @@ let celsiusConversion = document.querySelector("#celsius");
 celsiusConversion.addEventListener("click", displayCelsiusTemperature);
 
 search("Poznań");
-displayForecast();
