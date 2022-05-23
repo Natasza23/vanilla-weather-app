@@ -21,6 +21,33 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#day-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+      <div class="forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/01d@2x.png"
+          alt=""
+          width="42"
+        />
+      <div class="forecast-temp">
+        <span class="forecast-temp-max">18°</span>
+        <span class="forecast-temp-min">12°</span>
+      </div>
+    </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#temp");
@@ -84,3 +111,4 @@ let celsiusConversion = document.querySelector("#celsius");
 celsiusConversion.addEventListener("click", displayCelsiusTemperature);
 
 search("Poznań");
+displayForecast();
